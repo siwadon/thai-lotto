@@ -22,3 +22,5 @@ deploy:
   app:
     develop: thai-lotto-staging
     master: thai-lotto
+  on:
+    php: 5.5
