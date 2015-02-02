@@ -1,7 +1,6 @@
 language: php
 
 php:
-- 5.4
 - 5.5
 - 5.6
 - hhvm
@@ -11,7 +10,7 @@ notifications:
 
 before_script:
 - composer self-update
-- composer install --prefer-source --no-interaction --dev
+- composer install --prefer-source --no-interaction --ignore-platform-reqs --dev
 
 script: vendor/bin/phpunit
 
@@ -23,4 +22,4 @@ deploy:
     develop: thai-lotto-staging
     master: thai-lotto
   on:
-    php: 5.5
+    php: 5.6
