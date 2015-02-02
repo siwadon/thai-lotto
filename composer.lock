@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4524eaa383efc0fb9182c2e9d2111b00",
+    "hash": "3d64ee8acd3558b8d5bb8b469c9e7f82",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -414,12 +414,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "8a19d18ff80338f64bf01a32d0297b9bd97344a8"
+                "reference": "f6fac77f04895e53a518bdb7fb6517e8553aacfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/8a19d18ff80338f64bf01a32d0297b9bd97344a8",
-                "reference": "8a19d18ff80338f64bf01a32d0297b9bd97344a8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f6fac77f04895e53a518bdb7fb6517e8553aacfc",
+                "reference": "f6fac77f04895e53a518bdb7fb6517e8553aacfc",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-01-30 19:09:23"
+            "time": "2015-02-01 21:50:00"
         },
         {
             "name": "league/flysystem",
@@ -2790,6 +2790,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-pdo_sqlite": "*"
+    },
     "platform-dev": []
 }
