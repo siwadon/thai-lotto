@@ -23,11 +23,11 @@ class PrizeController extends Controller {
 	public function result($date = null)
 	{
 		if ($date) {
-			$prizes = Prize::where('date', $date)->get();
+			$prizes = Prize::where('date', $date)->orderBy('prize')->get();
 		}
 		else {
 			$subquery = 'date = (SELECT DISTINCT date FROM prizes ORDER BY date DESC LIMIT 1)';
-			$prizes = Prize::whereRaw($subquery)->get();
+			$prizes = Prize::whereRaw($subquery)->orderBy('prize')->get();
 		}
 		return view('result', compact('prizes'));
 	}
