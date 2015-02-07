@@ -20,5 +20,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('result/{date}', 'PrizeController@result');
+Route::get('result/{date?}', 'PrizeController@result');
 Route::get('index', 'PrizeController@index');
+
