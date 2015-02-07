@@ -10,16 +10,30 @@ use Illuminate\Http\Request;
 class PrizeController extends Controller {
 
 	/**
-	 * Display a result of the specific date.
+	 * Redirect to result page
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function index()
+	{
+		return redirect()->route('result');
+	}
+	/**
+	 * Display all lottery result in our database.
 	 *
 	 * @return View
 	 */
-	public function index(Prize $prize)
+	public function list_all(Prize $prize)
 	{
 		$prizes = $prize->get();
 		return view('index', compact('prizes'));
 	}
 
+	/**
+	 * Display a result of the specific date.
+	 *
+	 * @return View
+	 */
 	public function result($date = null)
 	{
 		if ($date) {
@@ -32,6 +46,12 @@ class PrizeController extends Controller {
 		return view('result', compact('prizes'));
 	}
 
+	/**
+	 * Return date list in JSON format
+	 *
+	 * @param Prize $prize
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function list_dates(Prize $prize)
 	{
 		$dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();

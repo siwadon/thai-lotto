@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'PrizeController@index');
 
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+Route::get('result/{date?}', [
+    'as' => 'result',
+    'uses' => 'PrizeController@result'
 ]);
 
-Route::get('result/{date?}', 'PrizeController@result');
-Route::get('index', 'PrizeController@index');
+Route::get('all', 'PrizeController@list_all');
 
 Route::get('dates', 'PrizeController@list_dates');
