@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>RESULT</h1>
-    {{ $prize->count() }}
-    @foreach ($prize as $p)
-        {{ $p->prize }}
+    {{ $prizes->count() }}
+    @foreach ($prizes as $record)
+        {{ $record->prize }}
     @endforeach

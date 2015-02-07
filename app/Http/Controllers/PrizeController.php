@@ -16,19 +16,19 @@ class PrizeController extends Controller {
 	 */
 	public function index(Prize $prize)
 	{
-		$prize = $prize->get();
-		return view('index', compact('prize'));
+		$prizes = $prize->get();
+		return view('index', compact('prizes'));
 	}
 
 	public function result($date = null)
 	{
 		if ($date) {
-			$prize = Prize::where('date', $date)->get();
+			$prizes = Prize::where('date', $date)->get();
 		}
 		else {
 			$subquery = 'date = (SELECT DISTINCT date FROM prizes ORDER BY date DESC LIMIT 1)';
-			$prize = Prize::whereRaw($subquery)->get();
+			$prizes = Prize::whereRaw($subquery)->get();
 		}
-		return view('result', compact('prize'));
+		return view('result', compact('prizes'));
 	}
 }
