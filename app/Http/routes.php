@@ -23,3 +23,4 @@ Route::controllers([
 Route::get('result/{date?}', 'PrizeController@result');
 Route::get('index', 'PrizeController@index');
 
+Route::get('dates', 'PrizeController@list_dates');

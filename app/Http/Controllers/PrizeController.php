@@ -31,4 +31,10 @@ class PrizeController extends Controller {
 		}
 		return view('result', compact('prizes'));
 	}
+
+	public function list_dates(Prize $prize)
+	{
+		$dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
+		return response()->json($dates);
+	}
 }
