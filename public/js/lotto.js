@@ -13,11 +13,17 @@ app.controller('LottoController', [ '$scope', '$http', '$window', '$location', f
     $scope.prizes = $window.initialData;
 
     $scope.get_result = function() {
+        $scope.loading = true;
         $http.get('/api/result/' + $scope.selected_date)
             .success(function(data) {
                 $scope.prizes = data;
                 $location.path($scope.selected_date);
+                $scope.loading = false;
+            })
+            .error(function(data) {
+                $scope.loading = false;
             });
+
     };
 
     $http.get('/api/dates').success(function(data){
