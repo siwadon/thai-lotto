@@ -20,4 +20,8 @@ Route::get('result/{date?}', [
 
 Route::get('all', 'PrizeController@list_all');
 
-Route::get('dates', 'PrizeController@list_dates');
+
+Route::group(array('prefix' => 'api'), function()
+{
+    Route::get('dates', 'PrizeController@list_dates');
+});

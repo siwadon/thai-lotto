@@ -10,7 +10,7 @@ app.config(function($mdThemingProvider) {
 });
 
 app.controller('DateController', [ '$scope', '$http', function($scope, $http) {
-    $http.get('/dates').success(function(data){
+    $http.get('/api/dates').success(function(data){
         $scope.dates = data;
     });
 }]);
