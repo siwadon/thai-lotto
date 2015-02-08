@@ -2,6 +2,7 @@
 <head>
     <title>Lottery</title>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.css">
+    <link rel="stylesheet" href="{{ asset('css/lotto.css') }}">
 </head>
 <body ng-app="Lotto">
     <div class="container" ng-controller="LottoController" layout="column" flex layout-fill>

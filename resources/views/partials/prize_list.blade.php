@@ -5,7 +5,7 @@
             <div layout="row" layout-sm="column" layout-align="space-around" ng-show="loading">
                 <md-progress-circular md-mode="indeterminate"></md-progress-circular>
             </div>
-            <div flex="20" class="md-padding md-margin" ng-repeat=" prize in prizes.prizes.{{ $type }}" ng-hide="loading">[[ prize ]]</div>
+            <div flex="20" class="prize md-padding md-margin" ng-repeat=" prize in prizes.prizes.{{ $type }}" ng-hide="loading">[[ prize ]]</div>
         </md-card-content>
     </md-card>
 </section>
