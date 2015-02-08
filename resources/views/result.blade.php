@@ -9,7 +9,7 @@
             <h1>Lottery Result from [[ selected_date | date ]]</h1>
         </div>
         <md-input-container>
-            <select ng-model="selected_date" ng-options="date | date for date in dates"></select>
+            <select ng-model="selected_date" ng-options="date | date for date in dates" ng-change="get_result()"></select>
         </md-input-container>
     </md-toolbar>
     <md-content>
