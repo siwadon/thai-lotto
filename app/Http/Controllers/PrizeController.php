@@ -36,13 +36,7 @@ class PrizeController extends Controller {
 	 */
 	public function result($date = null)
 	{
-		if ($date) {
-			$prizes = Prize::where('date', $date)->orderBy('prize')->get();
-		}
-		else {
-			$subquery = 'date = (SELECT DISTINCT date FROM prizes ORDER BY date DESC LIMIT 1)';
-			$prizes = Prize::whereRaw($subquery)->orderBy('prize')->get();
-		}
+		$prizes = self::_get_result_from_date($date);
 		return view('result', compact('prizes'));
 	}
 
@@ -56,9 +50,52 @@ class PrizeController extends Controller {
 	{
 		$dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
 		$output = [];
-		foreach($dates as $date) {
+		foreach ($dates as $date) {
 			$output[] = $date->date;
 		}
 		return response()->json($output);
+	}
+
+	/**
+	 * Return result list in JSON format
+	 *
+	 * @param Prize $prize
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function list_result($date = null)
+	{
+		$prizes = self::_get_result_from_date($date);
+		return response()->json($prizes);
+	}
+
+	/**
+	 * @param $date
+	 * @return mixed
+	 */
+	private function _get_result_from_date($date)
+	{
+		if ($date) {
+			$prizes = Prize::where('date', $date)->orderBy('prize')->get();
+		}
+		else {
+			$subquery = 'date = (SELECT DISTINCT date FROM prizes ORDER BY date DESC LIMIT 1)';
+			$prizes = Prize::whereRaw($subquery)->orderBy('prize')->get();
+		}
+		return self::_prepare_result($prizes);
+	}
+
+	/**
+	 * @param $prizes
+	 * @return mixed
+	 */
+	private function _prepare_result($prizes)
+	{
+		$result['date'] = $prizes->first()->date;
+
+		foreach($prizes as $record) {
+			$result['prizes'][$record->type][] = $record->prize;
+		}
+
+		return $result;
 	}
 }

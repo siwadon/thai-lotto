@@ -24,4 +24,5 @@ Route::get('all', 'PrizeController@list_all');
 Route::group(array('prefix' => 'api'), function()
 {
     Route::get('dates', 'PrizeController@list_dates');
+    Route::get('result/{date?}', 'PrizeController@list_result');
 });
