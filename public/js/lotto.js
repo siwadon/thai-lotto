@@ -9,7 +9,9 @@ app.config(function($mdThemingProvider) {
         .accentPalette('green');
 });
 
-app.controller('DateController', [ '$scope', '$http', function($scope, $http) {
+app.controller('LottoController', [ '$scope', '$http', '$window', function($scope, $http, $window) {
+    $scope.prizes = $window.initialData;
+
     $http.get('/api/dates').success(function(data){
         $scope.dates = data;
     });

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.css">
 </head>
 <body ng-app="Lotto">
-    <div class="container" layout="column" flex layout-fill>
+    <div class="container" ng-controller="LottoController" layout="column" flex layout-fill>
         @yield('content')
     </div>
 
