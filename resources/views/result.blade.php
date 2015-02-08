@@ -1,10 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <h1>Lottery Result from {{ $prizes->first()->date }}</h1>
+    <md-toolbar ng-controller="DateController" layout="row" layout-align="space-between center">
+        <div class="md-toolbar-tools" flex>
+            <h1>Lottery Result from [[ selected_date | date ]]</h1>
         </div>
+        <md-input-container ng-init="selected_date = '{{ $prizes->first()->date }}'">
+            <select ng-model="selected_date" ng-options="date | date for date in dates"></select>
+        </md-input-container>
     </md-toolbar>
     <md-content>
         @include('partials.prize_list', ['prizes' => $prizes, 'name' => 'First prize',   'type' => 'first'])

@@ -55,6 +55,10 @@ class PrizeController extends Controller {
 	public function list_dates(Prize $prize)
 	{
 		$dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
-		return response()->json($dates);
+		$output = [];
+		foreach($dates as $date) {
+			$output[] = $date->date;
+		}
+		return response()->json($output);
 	}
 }
