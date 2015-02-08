@@ -5,7 +5,7 @@
         <div class="md-toolbar-tools" flex>
             <h1>Lottery Result from [[ selected_date | date ]]</h1>
         </div>
-        <md-input-container ng-init="selected_date = '{{ $prizes->first()->date }}'">
+        <md-input-container ng-init="selected_date = '{{ $prizes['date'] }}'">
             <select ng-model="selected_date" ng-options="date | date for date in dates"></select>
         </md-input-container>
     </md-toolbar>
