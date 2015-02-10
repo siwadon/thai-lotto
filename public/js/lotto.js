@@ -5,11 +5,11 @@ var app = angular.module('Lotto', ['ngMaterial'], function($interpolateProvider)
 
 app.config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-        .primaryPalette('red')
-        .accentPalette('green');
+        .primaryPalette('indigo')
+        .accentPalette('pink');
 });
 
-app.controller('LottoController', [ '$scope', '$http', '$window', '$location', function($scope, $http, $window, $location) {
+app.controller('LottoController', function($scope, $http, $window, $location) {
     $scope.prizes = $window.initialData;
 
     $scope.get_result = function() {
@@ -29,4 +29,4 @@ app.controller('LottoController', [ '$scope', '$http', '$window', '$location', f
     $http.get('/api/dates').success(function(data){
         $scope.dates = data;
     });
-}]);
+});
