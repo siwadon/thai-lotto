@@ -14,8 +14,8 @@
     </md-toolbar>
     <md-content>
         @include('partials.prize_list', ['name' => 'First prize',   'type' => 'first'])
-        @include('partials.prize_list', ['name' => 'Last 3 Digits', 'type' => 'last_three_digits'])
         @include('partials.prize_list', ['name' => 'Last 2 Digits', 'type' => 'last_two_digits'])
+        @include('partials.prize_list', ['name' => 'Last 3 Digits', 'type' => 'last_three_digits'])
         @include('partials.prize_list', ['name' => 'Second prizes', 'type' => 'second'])
         @include('partials.prize_list', ['name' => 'Third prizes',  'type' => 'third'])
         @include('partials.prize_list', ['name' => 'Fourth prizes', 'type' => 'fourth'])

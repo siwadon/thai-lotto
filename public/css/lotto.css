@@ -9,6 +9,7 @@ md-content {
 
 .prize {
     font-size: 5vw;
+    text-align: center;
 }
 
 @media (min-device-width: 360px) {
