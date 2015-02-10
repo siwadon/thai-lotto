@@ -1,3 +1,21 @@
+body {
+    font-size: 3vw;
+    height: 100%;
+}
+
+md-content {
+    height: 100%;
+}
+
 .prize {
-    font-size: 4em;
+    font-size: 5vw;
+}
+
+@media (min-device-width: 360px) {
+}
+
+@media (min-device-width: 600px) {
+}
+
+@media (min-device-width: 960px) {
 }
