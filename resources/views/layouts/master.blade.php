@@ -1,6 +1,6 @@
 <html ng-app="Lotto">
 <head>
-    <title>Lottery</title>
+    <title ng-bind="'Lottery result on ' + (result_date | date)">Lottery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.css">
     <link rel="stylesheet" href="{{ asset('css/lotto.css') }}">

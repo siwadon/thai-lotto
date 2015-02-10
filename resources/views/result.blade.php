@@ -6,7 +6,7 @@
     </script>
     <md-toolbar layout="row" layout-align="space-between center" ng-init="selected_date = prizes.date">
         <div class="md-toolbar-tools" flex>
-            <h1 ng-bind="'Lottery result from ' + (selected_date | date)"></h1>
+            <h1 ng-bind="'Lottery result on ' + (selected_date | date)"></h1>
         </div>
         <md-input-container>
             <select ng-model="selected_date" ng-options="date | date for date in dates" ng-change="get_result()"></select>

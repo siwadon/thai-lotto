@@ -11,8 +11,9 @@ app.config(function($mdThemingProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 });
 
-app.controller('LottoController', function($scope, $http, $window, $location) {
+app.controller('LottoController', function($scope, $rootScope, $http, $window, $location) {
     $scope.prizes = $window.initialData;
+    $rootScope.result_date = $scope.prizes.date;
 
     $scope.get_result = function() {
         $scope.loading = true;
@@ -20,6 +21,7 @@ app.controller('LottoController', function($scope, $http, $window, $location) {
             .success(function(data) {
                 $scope.prizes = data;
                 $location.path('result/' + $scope.selected_date);
+                $rootScope.selected_date = $scope.selected_date;
                 $scope.loading = false;
             })
             .error(function(data) {
