@@ -81,6 +81,11 @@ class PrizeController extends Controller {
 			$subquery = 'date = (SELECT DISTINCT date FROM prizes ORDER BY date DESC LIMIT 1)';
 			$prizes = Prize::whereRaw($subquery)->orderBy('prize')->get();
 		}
+
+		if ($prizes->isEmpty()) {
+			abort(404);
+		}
+
 		return self::_prepare_result($prizes);
 	}
 
