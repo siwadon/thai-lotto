@@ -18,6 +18,7 @@ class PrizeController extends Controller {
 	{
 		return redirect()->route('result');
 	}
+
 	/**
 	 * Display all lottery result in our database.
 	 *
@@ -41,6 +42,17 @@ class PrizeController extends Controller {
 	}
 
 	/**
+	 * Display a result of the specific date in JSON.
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function result_json($date = null)
+	{
+		$prizes = self::_get_result_from_date($date);
+		return response()->json($prizes);
+	}
+
+	/**
 	 * Return date list in JSON format
 	 *
 	 * @param Prize $prize
@@ -54,18 +66,6 @@ class PrizeController extends Controller {
 			$output[] = $date->date;
 		}
 		return response()->json($output);
-	}
-
-	/**
-	 * Return result list in JSON format
-	 *
-	 * @param Prize $prize
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function list_result($date = null)
-	{
-		$prizes = self::_get_result_from_date($date);
-		return response()->json($prizes);
 	}
 
 	/**
