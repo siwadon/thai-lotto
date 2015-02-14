@@ -1,17 +1,19 @@
 <?php
 
-class ExampleTest extends TestCase {
+class RouteTest extends TestCase {
 
 	/**
-	 * A basic functional test example.
+	 * test index route.
 	 *
 	 * @return void
 	 */
-	public function testBasicExample()
+	public function testIndexGetRedirect()
 	{
 		$response = $this->call('GET', '/');
 
 		$this->assertEquals(302, $response->getStatusCode());
+
+		$this->assertRedirectedTo('/result');
 	}
 
 }
