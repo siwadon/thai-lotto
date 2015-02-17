@@ -2,6 +2,11 @@
 <head>
     <title ng-bind="'ตรวจหวย วันที่ ' + (result_date | date) + ' | Pungyen.com'">Lottery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="ตรวจหวย | ปังเย็น" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ Request::url() }}" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="เลขที่ออก {{ $prizes['prizes']['first'][0]  }}" />
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.css">
     <link rel="stylesheet" href="{{ asset('css/lotto.css') }}">
     <base href="/">
