@@ -4,7 +4,7 @@
     <script>
         window.initialData = {!! json_encode($prizes) !!}
     </script>
-    <md-toolbar layout="row" layout-align="space-between center" ng-init="selected_date = prizes.date">
+    <md-toolbar layout="row" layout-align="space-between center" ng-init="selected_date = prizes.date.numeric">
         <div class="md-toolbar-tools" flex>
             <h1 ng-bind="'ตรวจหวย วันที่ ' + (selected_date | date)"></h1>
         </div>

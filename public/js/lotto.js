@@ -13,7 +13,7 @@ app.config(function($mdThemingProvider, $locationProvider) {
 
 app.controller('LottoController', function($scope, $rootScope, $http, $window, $location) {
     $scope.prizes = $window.initialData;
-    $rootScope.result_date = $scope.prizes.date;
+    $rootScope.result_date = $scope.prizes.date.numeric;
 
     $scope.get_result = function() {
         $scope.loading = true;

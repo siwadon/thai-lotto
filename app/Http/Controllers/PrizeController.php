@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helper;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Prize;
@@ -94,7 +95,12 @@ class PrizeController extends Controller {
      */
     private function _prepare_result($prizes)
     {
-        $result['date'] = $prizes->first()->date;
+        $date = $prizes->first()->date;
+
+        $result['date'] = [
+            'numeric' => $date,
+            'human'   => Helper::human_date($date)
+        ];
 
         foreach($prizes as $record) {
             $result['prizes'][$record->type][] = $record->prize;
