@@ -1,2 +1,3 @@
 User-agent: *
+Sitemap: http://lotto.pungyen.com/sitemap.xml
 Disallow:
