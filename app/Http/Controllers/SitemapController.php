@@ -17,6 +17,6 @@ class SitemapController extends Controller {
             $urls[] = $url . '/result/' . $date->date;
         }
 
-        return view('sitemap', compact('urls'));
+        return response()->view('sitemap', compact('urls'))->header('Content-Type', 'text/xml');
     }
 }
