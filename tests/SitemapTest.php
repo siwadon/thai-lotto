@@ -7,5 +7,9 @@ class SitemapTest extends TestCase {
         $this->call('GET', '/sitemap.xml');
         $this->assertViewHas('urls');
         $this->assertResponseOk();
+
+        $this->call('GET', '/sitemap.txt');
+        $this->assertViewHas('urls');
+        $this->assertResponseOk();
     }
 }

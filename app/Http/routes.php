@@ -20,7 +20,7 @@ Route::get('result/{date?}', [
 
 Route::get('all', 'PrizeController@list_all');
 
-Route::get('sitemap.xml', 'SitemapController@index');
+Route::get('sitemap{extension}', 'SitemapController@index');
 
 Route::group(array('prefix' => 'api'), function()
 {
