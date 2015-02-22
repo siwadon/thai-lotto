@@ -4,6 +4,7 @@
 <link rel="import" href="bower_components/core-dropdown/core-dropdown.html">
 <link rel="import" href="bower_components/core-dropdown-menu/core-dropdown-menu.html">
 <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="bower_components/core-menu/core-menu.html">
 <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="bower_components/core-item/core-item.html">
 <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
@@ -36,6 +37,9 @@
             height: 100px;
             background-color: rgb(255, 255, 255);
         }
+        core-dropdown-menu {
+            color: black;
+        }
     </style>
     <core-header-panel mode="waterfall">
         <core-toolbar>
@@ -43,11 +47,11 @@
             <div>ตรวจหวย {{ result_date.human }}</div>
             <core-dropdown-menu label="Select a Date">
                 <core-dropdown class="dropdown">
-                    <core-selector>
+                    <core-menu>
                         <template repeat="{{ date in dates }}">
                             <core-item label="{{ date }}"></core-item>
                         </template>
-                    </core-selector>
+                    </core-menu>
                 </core-dropdown>
             </core-dropdown-menu>
         </core-toolbar>
