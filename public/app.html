@@ -44,12 +44,12 @@
     <core-header-panel mode="waterfall">
         <core-toolbar>
             <core-icon-button icon="menu"></core-icon-button>
-            <div>ตรวจหวย {{ result_date.human }}</div>
+            <div>{{ selected_date.human }}</div>
             <core-dropdown-menu label="Select a Date">
                 <core-dropdown class="dropdown">
                     <core-menu>
                         <template repeat="{{ date in dates }}">
-                            <core-item label="{{ date }}"></core-item>
+                            <core-item label="{{ date }}" on-click="{{ updateSelectedUrl }}"></core-item>
                         </template>
                     </core-menu>
                 </core-dropdown>
@@ -72,6 +72,13 @@
     url="/api/dates"
     handleAs="json"
     response="{{ dates }}"
+    ></core-ajax>
+    
+    <core-ajax
+    auto
+    url="{{ selected_url }}"
+    handleAs="json"
+    on-core-response="{{ updateResult }}"
     ></core-ajax>
 </template>
 
