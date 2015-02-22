@@ -63,7 +63,7 @@ class PrizeController extends Controller {
         $dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
         $output = [];
         foreach ($dates as $date) {
-            $output[] = $date->date;
+            $output[] = [ 'numeric' => $date->date, 'human' => Helper::human_date($date->date) ];
         }
         return response()->json($output);
     }

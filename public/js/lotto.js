@@ -23,7 +23,7 @@ Polymer('app-element', {
         ];
     },
     updateSelectedUrl: function(e, detail, sender) {
-        this.selected_url = '/api/result/' + e.target.templateInstance.model.date;
+        this.selected_url = '/api/result/' + e.target.templateInstance.model.date.numeric;
     },
     updateResult: function(e, detail, sender) {
         this.setResult(detail.response);
