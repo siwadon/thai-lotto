@@ -1,36 +1,14 @@
-var app = angular.module('Lotto', ['ngMaterial'], function($interpolateProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-});
-
-app.config(function($mdThemingProvider, $locationProvider) {
-    $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
-        .accentPalette('pink');
-
-    $locationProvider.html5Mode(true);
-});
-
-app.controller('LottoController', function($scope, $rootScope, $http, $window, $location) {
-    $scope.prizes = $window.initialData;
-    $rootScope.result_date = $scope.prizes.date.numeric;
-
-    $scope.get_result = function() {
-        $scope.loading = true;
-        $http.get('/api/result/' + $scope.selected_date)
-            .success(function(data) {
-                $scope.prizes = data;
-                $location.path('result/' + $scope.selected_date);
-                $rootScope.selected_date = $scope.selected_date;
-                $scope.loading = false;
-            })
-            .error(function(data) {
-                $scope.loading = false;
-            });
-
-    };
-
-    $http.get('/api/dates').success(function(data){
-        $scope.dates = data;
-    });
+Polymer('app-element', {
+    ready: function() {
+        this.result_date = window.initialData.date;
+        this.prizes = [
+        { label: 'รางวัลที่หนึ่ง', data: window.initialData.prizes.first },
+        { label: 'เลขท้ายสองตัว', data: window.initialData.prizes.last_two_digits },
+        { label: 'เลขท้ายสามตัว', data: window.initialData.prizes.last_three_digits },
+        { label: 'รางวัลที่สอง',  data: window.initialData.prizes.second },
+        { label: 'รางวัลที่สาม',  data: window.initialData.prizes.third },
+        { label: 'รางวัลที่สี่',   data: window.initialData.prizes.fourth },
+        { label: 'รางวัลที่ห้า',   data: window.initialData.prizes.fifth },
+        ];
+    }
 });
