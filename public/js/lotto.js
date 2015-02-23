@@ -1,6 +1,11 @@
 Polymer('app-element', {
     ready: function() {
         this.setResult(window.initialData);
+        app = this;
+        window.onpopstate = function(event) {
+            app.selected_date = event.state.date;
+            app.prizes = event.state.prizes;
+        }
     },
     setResult: function(result) {
         this.selected_date = result.date;
@@ -22,5 +27,10 @@ Polymer('app-element', {
     },
     updateResult: function(e, detail, sender) {
         this.setResult(detail.response);
+        history.pushState(
+            { date: this.selected_date, prizes: this.prizes },
+            document.title,
+            'result/' + this.selected_date.numeric
+        );
     },
 });
