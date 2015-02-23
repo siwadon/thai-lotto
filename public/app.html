@@ -50,7 +50,7 @@
             <div>{{ selected_date.human }}</div>
             <core-dropdown-menu label="Select a Date">
                 <core-dropdown class="dropdown">
-                    <core-menu>
+                    <core-menu valueattr="label" selected="{{ selected_date.numeric }}">
                         <template repeat="{{ date in dates }}">
                             <core-item label="{{ date }}" on-click="{{ updateSelectedUrl }}"></core-item>
                         </template>
