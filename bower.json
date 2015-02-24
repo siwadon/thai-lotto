@@ -23,5 +23,8 @@
     "core-dropdown": "Polymer/core-dropdown#~0.5.5",
     "core-collapse": "Polymer/core-collapse#~0.5.5",
     "core-ajax": "Polymer/core-ajax#~0.5.5"
+  },
+  "devDependencies": {
+    "web-component-tester": "~2.2.3"
   }
 }
