@@ -15,6 +15,7 @@
 </head>
 <body>
     <app-element></app-element>
+    <script src="{{ asset('js/newrelic.js') }}"></script>
 </body>
 </html>
 <html>
