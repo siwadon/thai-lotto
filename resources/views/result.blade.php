@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Lottery | Pungyen.com</title>
+    <title>ตรวจหวย วันที่ {{ $prizes['date']['human'] }} , ตรวจลอตเตอรี่ เลขเด็ด | ปังเย็น</title>
     <base href="/">
-    <meta charset="UTF-8">
-    @include('blocks/opengraph', ['prizes' => $prizes])
+    @include('blocks/meta', ['prizes' => $prizes])
     @include('blocks/google_analytics')
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
     <script>
