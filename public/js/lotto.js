@@ -5,6 +5,7 @@ Polymer('app-element', {
         window.onpopstate = function(event) {
             app.selected_date = event.state.date;
             app.prizes = event.state.prizes;
+            app.updateTitle();
         }
     },
     setResult: function(result) {
@@ -32,5 +33,9 @@ Polymer('app-element', {
             document.title,
             'result/' + this.selected_date.numeric
         );
+        this.updateTitle();
     },
+    updateTitle: function() {
+        document.title = "ตรวจหวย วันที่ " + this.selected_date.human + " , ตรวจลอตเตอรี่ เลขเด็ด | ปังเย็น";
+    }
 });
