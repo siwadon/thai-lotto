@@ -1,7 +1,8 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "idewz/thai-lotto",
+	"description": "Thai Lottery Data",
+        "version": "2.0.0",
+	"keywords": ["lotto", "lottery", "thailand"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
