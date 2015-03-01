@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>app-element</title>
+    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <link rel="import" href="../app-element.html">
+</head>
+<body>
+    <script>
+      window.initialData = {"date":{"numeric":"2015-02-16","human":"16 \u0e01\u0e38\u0e21\u0e20\u0e32\u0e1e\u0e31\u0e19\u0e18\u0e4c 2558"},"prizes":{"different_of_period":["001863","001865"],"first":["001864"],"second":["004811","339936","373123","846785","922634"],"fifth":["005593","010934","011965","024151","038761","049437","060859","065982","081542","085495","085942","093130","115485","120655","134621","140213","140509","144302","148415","157769","172283","205360","213058","214375","217807","220922","222489","232028","271325","327007","337520","340081","342334","342803","346219","355575","374699","385353","389286","395119","417269","425406","434965","447843","466141","476922","478677","483666","487933","491946","507289","507791","521523","544878","559031","561011","563305","571463","584643","604147","619258","631769","634866","643401","647091","648789","668025","672030","677649","682005","702768","704822","706233","742710","774540","782366","787678","810692","822095","840770","846959","850745","855963","857132","861230","863943","868807","870480","889605","918564","919792","926864","938375","952065","962183","963730","965222","966122","967566","973709"],"fourth":["010695","040121","058433","128578","130667","148485","153384","189002","212785","220552","235843","284492","285858","287406","314207","325487","336463","369146","396020","412364","472578","517629","519956","533367","543200","552203","556623","563938","572995","587529","598641","642164","646967","672448","672800","695149","699611","717481","717573","723083","726417","740726","827125","828181","871427","880409","895819","897566","907267","930063"],"third":["015454","225154","306513","401841","469207","622383","692125","809309","961736","988458"],"last_three_digits":["103","392","825","843"],"last_two_digits":["90"]}}
+    </script>
+    <app-element></app-element>
+
+    <script>
+        var app = document.querySelector('app-element');
+        var timeout = 50;
+
+        suite('<app-element>', function() {
+          
+            test('Current selected date is correct', function(done) {
+                expect(app.selected_date.numeric).to.equal('2015-02-16');
+
+                done();
+            });
+
+            test('Prize are ordered correctly', function(done) {
+                expect(app.prizes[0].label).to.equal('รางวัลที่หนึ่ง');
+                expect(app.prizes[1].label).to.equal('เลขท้ายสองตัว');
+                expect(app.prizes[2].label).to.equal('เลขท้ายสามตัว');
+                expect(app.prizes[3].label).to.equal('รางวัลที่สอง');
+                expect(app.prizes[4].label).to.equal('รางวัลที่สาม');
+                expect(app.prizes[5].label).to.equal('รางวัลที่สี่');
+                expect(app.prizes[6].label).to.equal('รางวัลที่ห้า');
+
+                done();
+            });
+
+            test('Change date returns correct url', function(done) {
+                app.selected_date = '2014-07-16';
+                
+                setTimeout(function() {
+                    expect(location.pathname).to.equal('/result/2014-07-16');
+                }, timeout);
+
+                done();
+            });
+
+            test('Change date returns lottery result', function(done) {
+                app.selected_date = '2015-01-16';
+                
+                setTimeout(function() {
+                    expect(app.prizes[0].data[0]).to.equal('480449');
+                    expect(app.prizes[1].data[0]).to.equal('11');
+                }, timeout);
+
+                done();
+            });
+
+            test('Back/Forward button in browser works like a magic!', function(done) {
+                app.selected_date = '2013-05-02';                
+                app.selected_date = '2013-05-16';
+                history.go(-1);
+                                
+                setTimeout(function() {
+                    expect(app.prizes[0].data[0]).to.equal('603458');
+                    expect(app.prizes[1].data[0]).to.equal('07');
+                    expect(location.pathname).to.equal('/result/2013-05-02');
+                }, timeout);
+                
+                history.go(1);
+                                
+                setTimeout(function() {
+                    expect(app.prizes[0].data[0]).to.equal('687125');
+                    expect(app.prizes[1].data[0]).to.equal('56');
+                    expect(location.pathname).to.equal('/result/2013-05-16');
+                }, timeout);
+
+                done();
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,24 +1,21 @@
-@extends('layouts.master')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ตรวจหวย วันที่ {{ $prizes['date']['human'] }} , ตรวจลอตเตอรี่ เลขเด็ด | ปังเย็น</title>
+    <base href="/">
+    @include('blocks/meta', ['prizes' => $prizes])
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @include('blocks/google_analytics')
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
     <script>
         window.initialData = {!! json_encode($prizes) !!}
     </script>
-    <md-toolbar layout="row" layout-align="space-between center" ng-init="selected_date = prizes.date.numeric">
-        <div class="md-toolbar-tools" flex>
-            <h1 ng-bind="'ตรวจหวย วันที่ ' + (selected_date | date)"></h1>
-        </div>
-        <md-input-container>
-            <select ng-model="selected_date" ng-options="date | date for date in dates.slice(0,24)" ng-change="get_result()"></select>
-        </md-input-container>
-    </md-toolbar>
-    <md-content>
-        @include('partials.prize_list', ['name' => 'รางวัลที่หนึ่ง',   'type' => 'first'])
-        @include('partials.prize_list', ['name' => 'รางวัลเลขท้ายสองตัว', 'type' => 'last_two_digits'])
-        @include('partials.prize_list', ['name' => 'รางวัลเลขท้ายสามตัว', 'type' => 'last_three_digits'])
-        @include('partials.prize_list', ['name' => 'รางวัลที่สอง', 'type' => 'second'])
-        @include('partials.prize_list', ['name' => 'รางวัลที่สาม',  'type' => 'third'])
-        @include('partials.prize_list', ['name' => 'รางวัลที่สี่', 'type' => 'fourth'])
-        @include('partials.prize_list', ['name' => 'รางวัลที่ห้า',  'type' => 'fifth'])
-    </md-content>
-@stop
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="import" href="app-element.html">
+</head>
+<body>
+    <app-element></app-element>
+    <script src="{{ asset('js/newrelic.js') }}"></script>
+</body>
+</html>
+<html>

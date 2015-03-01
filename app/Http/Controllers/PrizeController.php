@@ -58,13 +58,14 @@ class PrizeController extends Controller {
      * @param Prize $prize
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function list_dates(Prize $prize)
+    public function list_dates(Prize $prize, $limit=25)
     {
         $dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
         $output = [];
         foreach ($dates as $date) {
-            $output[] = $date->date;
+            $output[] = [ 'numeric' => $date->date, 'human' => Helper::human_date($date->date) ];
         }
+        array_splice($output, $limit);
         return response()->json($output);
     }
 

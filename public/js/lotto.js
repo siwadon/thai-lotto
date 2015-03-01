@@ -1,36 +1,41 @@
-var app = angular.module('Lotto', ['ngMaterial'], function($interpolateProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-});
-
-app.config(function($mdThemingProvider, $locationProvider) {
-    $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
-        .accentPalette('pink');
-
-    $locationProvider.html5Mode(true);
-});
-
-app.controller('LottoController', function($scope, $rootScope, $http, $window, $location) {
-    $scope.prizes = $window.initialData;
-    $rootScope.result_date = $scope.prizes.date.numeric;
-
-    $scope.get_result = function() {
-        $scope.loading = true;
-        $http.get('/api/result/' + $scope.selected_date)
-            .success(function(data) {
-                $scope.prizes = data;
-                $location.path('result/' + $scope.selected_date);
-                $rootScope.selected_date = $scope.selected_date;
-                $scope.loading = false;
-            })
-            .error(function(data) {
-                $scope.loading = false;
-            });
-
-    };
-
-    $http.get('/api/dates').success(function(data){
-        $scope.dates = data;
-    });
+Polymer('app-element', {
+    ready: function() {
+        this.setResult(window.initialData);
+        app = this;
+        window.onpopstate = function(event) {
+            app.selected_date = event.state.date;
+            app.prizes = event.state.prizes;
+            app.updateTitle();
+        }
+    },
+    setResult: function(result) {
+        this.selected_date = result.date;
+        this.prizes = this.mapPrizes(result.prizes);
+    },
+    mapPrizes: function(prizes) {
+        return [
+            { label: 'รางวัลที่หนึ่ง', data: prizes.first },
+            { label: 'เลขท้ายสองตัว', data: prizes.last_two_digits },
+            { label: 'เลขท้ายสามตัว', data: prizes.last_three_digits },
+            { label: 'รางวัลที่สอง',  data: prizes.second },
+            { label: 'รางวัลที่สาม',  data: prizes.third },
+            { label: 'รางวัลที่สี่',   data: prizes.fourth },
+            { label: 'รางวัลที่ห้า',   data: prizes.fifth },
+        ];
+    },
+    updateSelectedUrl: function(e, detail, sender) {
+        this.selected_url = '/api/result/' + e.target.templateInstance.model.date.numeric;
+    },
+    updateResult: function(e, detail, sender) {
+        this.setResult(detail.response);
+        history.pushState(
+            { date: this.selected_date, prizes: this.prizes },
+            document.title,
+            'result/' + this.selected_date.numeric
+        );
+        this.updateTitle();
+    },
+    updateTitle: function() {
+        document.title = "ตรวจหวย วันที่ " + this.selected_date.human + " , ตรวจลอตเตอรี่ เลขเด็ด | ปังเย็น";
+    }
 });

@@ -24,7 +24,7 @@ Route::get('sitemap{extension}', 'SitemapController@index');
 
 Route::group(array('prefix' => 'api'), function()
 {
-    Route::get('dates', [
+    Route::get('dates/{limit?}', [
         'as'   => 'api_date_list',
         'uses' => 'PrizeController@list_dates'
     ]);

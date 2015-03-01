@@ -2,32 +2,36 @@
 
 class RouteAPITest extends TestCase {
 
-	/**
-	 * test API date list.
-	 */
-	public function testGetDateList()
-	{
-		$response = $this->call('GET', '/api/dates');
+    /**
+     * test API date list.
+     */
+    public function testGetDateList()
+    {
+        $response = $this->call('GET', '/api/dates');
 
-		$this->assertResponseOk();
-	}
+        $this->assertResponseOk();
 
-	/**
-	 * test API lottery result
-	 */
-	public function testResultPage()
-	{
-		$this->call('GET', '/api/result');
+        $response = $this->call('GET', '/api/dates/12');
 
-		$this->assertResponseOk();
+        $this->assertResponseOk();
+    }
 
-		$this->call('GET', '/api/result/2015-01-16');
+    /**
+     * test API lottery result
+     */
+    public function testResultPage()
+    {
+        $this->call('GET', '/api/result');
 
-		$this->assertResponseOk();
+        $this->assertResponseOk();
 
-		$this->call('GET', '/api/result/2015-01-17');
+        $this->call('GET', '/api/result/2015-01-16');
 
-		$this->assertResponseStatus(404);
-	}
+        $this->assertResponseOk();
+
+        $this->call('GET', '/api/result/2015-01-17');
+
+        $this->assertResponseStatus(404);
+    }
 
 }
