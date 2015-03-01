@@ -28,7 +28,6 @@
             background-color: rgb(79, 125, 201);
         }
         section {
-            height: 1000px;
             background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
         }
         core-card {
@@ -36,17 +35,41 @@
             width: 96%;
             border-radius: 2px;
             box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-            margin: 2%;
-            height: 100px;
+            margin: 0px 2%;
             background-color: rgb(255, 255, 255);
         }
         core-dropdown-menu {
             color: black;
         }
+        .prize {
+            font-size: 3em;
+            text-align: center;
+        }
+        .date {
+            margin: 0px 2%;
+        }
+        @media (min-device-width: 360px) {
+            .prize {
+                width: 50%;
+            }
+        }
+
+        @media (min-device-width: 600px) {
+            .prize {
+                width: 33%;
+            }
+        }
+
+        @media (min-device-width: 960px) {
+            .prize {
+                width: 20%;
+            }
+        }
     </style>
     <core-header-panel mode="waterfall">
         <core-toolbar>
             <core-icon-button icon="menu"></core-icon-button>
+            ตรวจหวย
             <core-dropdown-menu label="Select a Date">
                 <core-dropdown class="dropdown">
                     <core-menu valueattr="label" selected="{{ selected_date.human }}">
@@ -59,10 +82,10 @@
         </core-toolbar>
         <section>
             <template repeat="{{ prize in prizes }}">
-                <core-card layout vertical center>
-                    <core-item label="{{ prize.label }}"></core-item>
+                <core-item label="{{ prize.label }}" class="date"></core-item>
+                <core-card layout horizontal wrap center center-justified>
                     <template repeat="{{ prize.data }}">
-                        <div class="prize" flex>{{}}</div>
+                        <div class="prize">{{}}</div>
                     </template>
                 </core-card>
             </template>
