@@ -1,4 +1,3 @@
 User-agent: *
 Sitemap: http://lotto.pungyen.com/sitemap.txt
-Disallow: /bower_components/
 Disallow: /test/
