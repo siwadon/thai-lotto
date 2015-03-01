@@ -48,6 +48,9 @@
         .date {
             margin: 0px 2%;
         }
+        .like-button iframe {
+            margin: 8px 2% 0px;
+        }
         @media (min-device-width: 360px) {
             .prize {
                 width: 50%;
@@ -81,6 +84,9 @@
             </core-dropdown-menu>
         </core-toolbar>
         <section>
+            <div class="like-button">
+                <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Flotto.pungyen.com&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=442768559205838" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px;" allowTransparency="true"></iframe>
+            </div>
             <template repeat="{{ prize in prizes }}">
                 <core-item label="{{ prize.label }}" class="date"></core-item>
                 <core-card layout horizontal wrap center center-justified>
@@ -89,6 +95,9 @@
                     </template>
                 </core-card>
             </template>
+            <core-card layout horizontal wrap center center-justified>
+                <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Flotto.pungyen.com&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=442768559205838" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:40px;" allowTransparency="true"></iframe>
+            </core-card>
         </section>
     </core-header-panel>
 
