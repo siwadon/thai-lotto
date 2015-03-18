@@ -58,7 +58,7 @@ class PrizeController extends Controller {
      * @param Prize $prize
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function list_dates(Prize $prize, $limit=25)
+    public function list_dates(Prize $prize, $limit=49)
     {
         $dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
         $output = [];
