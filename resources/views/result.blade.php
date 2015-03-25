@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <title>ตรวจหวย วันที่ {{ $prizes['date']['human'] }} , ตรวจลอตเตอรี่ เลขเด็ด | ปังเย็น</title>
+    <title>ตรวจสลากกินแบ่งรัฐบาล ตรวจหวย วันที่ {{ $prizes['date']['human'] }} | ปังเย็น</title>
     <base href="/">
     @include('blocks/meta', ['prizes' => $prizes])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
