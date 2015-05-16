@@ -2,7 +2,7 @@
 
 @task('deploy', ['on' => 'web'])
     {{-- Target the project directory --}}
-    cd /var/www/lotto
+    cd /var/www/lotto.pungyen.com
     {{-- Set app to maintenance mode --}}
     php artisan down
     {{-- Update composer to latest version --}}
