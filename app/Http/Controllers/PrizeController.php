@@ -38,6 +38,7 @@ class PrizeController extends Controller {
     public function result(Prize $prize, $date = null)
     {
         $prizes = self::_get_result_from_date($date);
+        $prizes = self::_sort_result($prizes);
         $dates  = self::_list_dates($prize);
         return view('result', compact('prizes', 'dates'));
     }
@@ -51,6 +52,30 @@ class PrizeController extends Controller {
     {
         $prizes = self::_get_result_from_date($date);
         return response()->json($prizes);
+    }
+
+    private function _sort_result(Array &$prizes)
+    {
+        $output = [];
+        $output['date'] = $prizes['date'];
+        $labels = [
+            'first'  => 'รางวัลที่หนึ่ง',
+            'last_two_digits'   => 'เลขท้ายสองตัว',
+            'last_three_digits' => 'เลขท้ายสามตัว',
+            'second' => 'รางวัลที่สอง',
+            'third'  => 'รางวัลที่สาม',
+            'fourth' => 'รางวัลที่สี่',
+            'fifth'  => 'รางวัลที่ห้า',
+        ];
+
+        foreach ($labels as $key => $label) {
+            $output['prizes'][$key] = [
+                'label' => $label,
+                'data'  => $prizes['prizes'][$key]
+            ];
+        }
+
+        return $output;
     }
 
     /**
