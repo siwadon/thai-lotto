@@ -35,10 +35,11 @@ class PrizeController extends Controller {
      *
      * @return View
      */
-    public function result($date = null)
+    public function result(Prize $prize, $date = null)
     {
         $prizes = self::_get_result_from_date($date);
-        return view('result', compact('prizes'));
+        $dates  = self::_list_dates($prize);
+        return view('result', compact('prizes', 'dates'));
     }
 
     /**
@@ -60,13 +61,20 @@ class PrizeController extends Controller {
      */
     public function list_dates(Prize $prize, $limit=49)
     {
+        $dates = self::_list_dates($prize, $limit);
+        return response()->json($dates);
+    }
+
+    private function _list_dates(Prize $prize, $limit=49)
+    {
         $dates = $prize->select('date')->groupBy('date')->orderBy('date', 'desc')->get();
         $output = [];
+
         foreach ($dates as $date) {
             $output[] = [ 'numeric' => $date->date, 'human' => Helper::human_date($date->date) ];
         }
-        array_splice($output, $limit);
-        return response()->json($output);
+
+        return array_splice($output, 0, $limit);
     }
 
     /**
