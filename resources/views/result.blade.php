@@ -83,7 +83,7 @@
           <h4>{{ $prize['label'] }}</h4>
         </div>
         @foreach ($prize['data'] as $number)
-        <div class="prize mdl-cell mdl-cell--2-col mdl-cell--4-tablet mdl-cell--6-phone">{{ $number }}</div>
+        <div class="prize mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">{{ $number }}</div>
         @endforeach
       </div>
     </section>
