@@ -67,7 +67,7 @@
   </header>
 
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">ตรวจย้อนหลัง</span>
+    <span class="mdl-layout-title">ตรวจหวยย้อนหลัง</span>
     <nav class="mdl-navigation">
       @foreach ($dates as $date)
         <a class="mdl-navigation__link" href="/result/{{ $date['numeric'] }}">{{ $date['human'] }}</a>
