@@ -10,8 +10,6 @@
     <script>
         window.initialData = {!! json_encode($prizes) !!}
     </script>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         @media (max-width: 479px) {
             .prize {
@@ -102,6 +100,21 @@
   </footer>
 </div>
 
+    <script>
+      var cb = function() {
+        var l = document.createElement('link'); l.rel = 'stylesheet';
+        l.href = 'https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css';
+        var f = document.createElement('link'); f.rel = 'stylesheet';
+        f.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+        var h = document.getElementsByTagName('head')[0];
+        h.parentNode.insertBefore(l, h);
+        h.parentNode.insertBefore(f, h);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(cb);
+      else window.addEventListener('load', cb);
+    </script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
     <script src="{{ asset('js/newrelic.js') }}"></script>
 </body>
