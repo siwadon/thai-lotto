@@ -10,6 +10,7 @@
     <script>
         window.initialData = {!! json_encode($prizes) !!}
     </script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
     <style>
         @media (max-width: 479px) {
             .prize {
@@ -47,7 +48,6 @@
             font-size: 1.25em;
         }
     </style>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
 </head>
 <body>
 
