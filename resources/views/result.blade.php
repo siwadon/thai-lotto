@@ -56,7 +56,7 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">ตรวจหวย วันที่ {{ $prizes['date']['human']}}</span>
+      <span class="mdl-layout-title">ตรวจหวย {{ $prizes['date']['human']}}</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
