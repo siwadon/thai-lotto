@@ -21,7 +21,7 @@
         }
         @media (max-width: 839px) and (min-width: 480px) {
             .prize {
-                font-size: 2.5em;
+                font-size: 2.25em;
                 margin: 0.5em 0;
             }
         }
@@ -60,7 +60,7 @@
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
-      <nav class="mdl-navigation">
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="https://www.facebook.com/pages/ปังเย็น/106598272788838">Facebook</a>
       </nav>
     </div>
