@@ -45,6 +45,9 @@
         .mdl-card__supporting-text {
             padding: 0;
         }
+        .mdl-navigation__link {
+            font-size: 1.25em;
+        }
     </style>
 </head>
 <body>
@@ -53,7 +56,7 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">ตรวจหวย</span>
+      <span class="mdl-layout-title">ตรวจหวย วันที่ {{ $prizes['date']['human']}}</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -64,7 +67,7 @@
   </header>
 
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">เลือกวันที่</span>
+    <span class="mdl-layout-title">ตรวจย้อนหลัง</span>
     <nav class="mdl-navigation">
       @foreach ($dates as $date)
         <a class="mdl-navigation__link" href="/result/{{ $date['numeric'] }}">{{ $date['human'] }}</a>
