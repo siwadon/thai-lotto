@@ -13,20 +13,44 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
+        @media (max-width: 479px) {
+            .prize {
+                font-size: 2.25em;
+                margin: 0.5em 0;
+            }
+        }
+        @media (max-width: 839px) and (min-width: 480px) {
+            .prize {
+                font-size: 2.5em;
+                margin: 0.5em 0;
+            }
+        }
+        @media (min-width: 840px) {
+            .prize {
+                font-size: 3em;
+                margin: 0.4em 0;
+            }
+            h4 {
+                margin: 0;
+            }
+        }
         .mdl-card {
             min-height: 1em;
         }
         .mdl-layout__content section:not(last-of-type) {
             width: 99%;
-            margin-top: 0.2em;
-            margin-bottom: 0.5em;
+            padding: 0;
+            margin: 0.2em auto 0.5em auto;
+        }
+        .mdl-card__supporting-text {
+            padding: 0;
         }
     </style>
 </head>
 <body>
 
-<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
-  <header class="mdl-layout__header mdl-layout__header--scroll">
+<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">ตรวจหวย</span>
@@ -50,14 +74,14 @@
 
   <main class="mdl-layout__content">
     @foreach ($prizes['prizes'] as $prize)
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-      <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-        <div class="mdl-card__supporting-text">
+    <section class="section--center mdl-grid mdl-shadow--2dp">
+      <div class="mdl-card mdl-grid mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__supporting-text mdl-cell--12-col">
           <h4>{{ $prize['label'] }}</h4>
-          @foreach ($prize['data'] as $number)
-            {{ $number }}
-          @endforeach
         </div>
+        @foreach ($prize['data'] as $number)
+        <div class="prize mdl-cell mdl-cell--2-col mdl-cell--4-tablet mdl-cell--6-phone">{{ $number }}</div>
+        @endforeach
       </div>
     </section>
     @endforeach
