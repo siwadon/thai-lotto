@@ -98,7 +98,7 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=120268998061814";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-page" data-href="https://www.facebook.com/pages/%E0%B8%9B%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99/106598272788838" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/pages/%E0%B8%9B%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99/106598272788838"><a href="https://www.facebook.com/pages/%E0%B8%9B%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99/106598272788838">ปังเย็น</a></blockquote></div></div>
+<div class="fb-page" data-href="https://www.facebook.com/pages/%E0%B8%9B%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99/106598272788838" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/pages/%E0%B8%9B%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99/106598272788838"><a href="https://www.facebook.com/pages/%E0%B8%9B%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99/106598272788838">ปังเย็น</a></blockquote></div></div>
   </footer>
 </div>
 
