@@ -13,7 +13,7 @@ class RouteTest extends TestCase {
 
 		$this->assertEquals(302, $response->getStatusCode());
 
-		$this->assertRedirectedTo('/result');
+		$this->assertRedirectedTo('/th/result');
 	}
 
 	/**
@@ -21,17 +21,17 @@ class RouteTest extends TestCase {
 	 */
 	public function testResultPage()
 	{
-		$this->call('GET', '/result');
+		$response = $this->call('GET', '/result');
+		$this->assertEquals(302, $response->getStatusCode());
+		$this->assertRedirectedTo('/th/result');
 
-		$this->assertResponseOk();
+		$response = $this->call('GET', '/result/2015-01-16');
+		$this->assertEquals(302, $response->getStatusCode());
+		$this->assertRedirectedTo('/th/result/2015-01-16');
 
-		$this->call('GET', '/result/2015-01-16');
-
-		$this->assertResponseOk();
-
-		$this->call('GET', '/result/2015-01-17');
-
-		$this->assertResponseStatus(404);
+		$response = $this->call('GET', '/result/2015-01-17');
+		$this->assertEquals(302, $response->getStatusCode());
+		$this->assertRedirectedTo('/th/result/2015-01-17');
 	}
 
 	/**
