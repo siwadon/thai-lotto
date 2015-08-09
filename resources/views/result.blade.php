@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <title>ตรวจสลากกินแบ่งรัฐบาล ตรวจหวย วันที่ {{ $prizes['date']['human'] }} | ปังเย็น</title>
+    <title>{{ trans('messages.title') }} {{ trans('messages.on') }} {{ $prizes['date']['human'] }} | {{ trans('messages.pungyen') }}</title>
     <base href="/">
     @include('blocks/meta', ['prizes' => $prizes])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +55,7 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">ตรวจหวย {{ $prizes['date']['human']}}</span>
+      <span class="mdl-layout-title">{{ trans('messages.check') }} {{ $prizes['date']['human']}}</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -66,7 +66,7 @@
   </header>
 
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">ตรวจหวยย้อนหลัง</span>
+    <span class="mdl-layout-title">{{ trans('messages.check_back') }}</span>
     <nav class="mdl-navigation">
       @foreach ($dates as $date)
         <a class="mdl-navigation__link" href="/result/{{ $date['numeric'] }}">{{ $date['human'] }}</a>
@@ -75,13 +75,13 @@
   </div>
 
   <main class="mdl-layout__content">
-    @foreach ($prizes['prizes'] as $prize)
+    @foreach ($prizes['prizes'] as $type => $prize)
     <section class="section--center mdl-grid mdl-shadow--2dp">
       <div class="mdl-card mdl-grid mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text mdl-cell--12-col">
-          <h4>{{ $prize['label'] }}</h4>
+          <h4>{{ trans("messages.prizes.$type") }}</h4>
         </div>
-        @foreach ($prize['data'] as $number)
+        @foreach ($prize as $number)
         <div class="prize mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">{{ $number }}</div>
         @endforeach
       </div>

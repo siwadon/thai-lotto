@@ -59,20 +59,17 @@ class PrizeController extends Controller {
         $output = [];
         $output['date'] = $prizes['date'];
         $labels = [
-            'first'  => 'รางวัลที่หนึ่ง',
-            'last_two_digits'   => 'เลขท้ายสองตัว',
-            'last_three_digits' => 'เลขท้ายสามตัว',
-            'second' => 'รางวัลที่สอง',
-            'third'  => 'รางวัลที่สาม',
-            'fourth' => 'รางวัลที่สี่',
-            'fifth'  => 'รางวัลที่ห้า',
+            'first',
+            'last_two_digits',
+            'last_three_digits',
+            'second',
+            'third',
+            'fourth',
+            'fifth',
         ];
 
-        foreach ($labels as $key => $label) {
-            $output['prizes'][$key] = [
-                'label' => $label,
-                'data'  => $prizes['prizes'][$key]
-            ];
+        foreach ($labels as $label) {
+            $output['prizes'][$label] = $prizes['prizes'][$label];
         }
 
         return $output;
