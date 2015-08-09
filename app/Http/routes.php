@@ -11,12 +11,34 @@
 |
 */
 
+if (in_array(Request::segment(1), Config::get('app.languages'))) {
+    App::setLocale(Request::segment(1));
+    Config::set('app.locale', Request::segment(1));
+}
+
 Route::get('/', 'PrizeController@index');
 
-Route::get('result/{date?}', [
-    'as' => 'result',
-    'uses' => 'PrizeController@result'
-]);
+Route::get('result/{date?}', 'PrizeController@index');
+
+Route::group(array('prefix' => 'th'), function()
+{
+    Route::get('/', 'PrizeController@index');
+
+    Route::get('result/{date?}', [
+        'as' => 'result_th',
+        'uses' => 'PrizeController@result'
+    ]);
+});
+
+Route::group(array('prefix' => 'en'), function()
+{
+    Route::get('/', 'PrizeController@index');
+
+    Route::get('result/{date?}', [
+        'as' => 'result_en',
+        'uses' => 'PrizeController@result'
+    ]);
+});
 
 Route::get('all', 'PrizeController@list_all');
 

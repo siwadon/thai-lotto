@@ -14,9 +14,10 @@ class PrizeController extends Controller {
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function index()
+    public function index($date = null)
     {
-        return redirect()->route('result');
+        $lang = config('app.locale');
+        return redirect()->route('result_' . $lang, $date);
     }
 
     /**
