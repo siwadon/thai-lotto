@@ -2,7 +2,7 @@
 
 return [
     'check' => 'Lottery result',
-    'check_back' => 'Check on selected date',
+    'check_back' => 'Select result date',
     'on'    => 'draw on',
     'meta.description'    => 'Thai lottery result',
     'meta.og.description' => 'Thai lottery result',
