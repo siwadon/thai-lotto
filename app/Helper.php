@@ -7,8 +7,9 @@ class Helper {
     
     public static function human_date($date)
     {
+        $lang = config('app.locale') == 'th' ? 'th_TH@calendar=BUDDHIST' : 'en_EN';
         $formatter = IntlDateFormatter::create(
-            "th_TH@calendar=BUDDHIST",
+            $lang,
             IntlDateFormatter::LONG,
             IntlDateFormatter::NONE,
             "GMT+07:00",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="{{ config('app.locale') }}">
 <head>
     <title>{{ trans('messages.title') }} {{ trans('messages.on') }} {{ $prizes['date']['human'] }} | {{ trans('messages.pungyen') }}</title>
     <base href="/">
