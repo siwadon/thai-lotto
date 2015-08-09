@@ -11,10 +11,12 @@ class SitemapController extends Controller {
         $url    = config('app.url');
         $urls   = [];
         $urls[] = $url;
-        $urls[] = $url . '/result';
+        $urls[] = $url . '/th/result';
+        $urls[] = $url . '/en/result';
         
         foreach ($dates as $date) {
-            $urls[] = $url . '/result/' . $date->date;
+            $urls[] = $url . '/th/result/' . $date->date;
+            $urls[] = $url . '/en/result/' . $date->date;
         }
 
         if ($extension == '.xml') {
