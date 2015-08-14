@@ -63,6 +63,7 @@ class PrizeController extends Controller {
             'first',
             'last_two_digits',
             'last_three_digits',
+            'first_three_digits',
             'second',
             'third',
             'fourth',
@@ -70,6 +71,10 @@ class PrizeController extends Controller {
         ];
 
         foreach ($labels as $label) {
+            if (! array_key_exists($label, $prizes['prizes'])) {
+                continue;
+            }
+
             $output['prizes'][$label] = $prizes['prizes'][$label];
         }
 
