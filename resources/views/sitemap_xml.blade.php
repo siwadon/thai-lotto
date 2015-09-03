@@ -14,6 +14,11 @@
           hreflang="{{ $alternate_lang }}"
           href="{{ $alternate_url }}"
       />
+      <xhtml:link
+          rel="alternate"
+          hreflang="{{ $lang }}"
+          href="{{ $url }}"
+      />
     </url>
   @endforeach
 @stop
