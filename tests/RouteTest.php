@@ -1,6 +1,7 @@
 <?php
 
 class RouteTest extends TestCase {
+    protected $baseUrl = 'http://localhost';
 
 	/**
 	 * test index route.

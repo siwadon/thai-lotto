@@ -1,6 +1,7 @@
 <?php
 
 class RouteAPITest extends TestCase {
+    protected $baseUrl = 'http://localhost';
 
     /**
      * test API date list.

@@ -1,6 +1,7 @@
 <?php
 
 class SitemapTest extends TestCase {
+    protected $baseUrl = 'http://localhost';
 
     public function testSitemapIsProperlyGenerated()
     {
